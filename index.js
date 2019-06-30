@@ -1,4 +1,4 @@
-const Etherscan = require('etherscan');
+
 
 const Telegraf = require('telegraf');
 const bot = new Telegraf("mykey");
@@ -6,8 +6,10 @@ const axios = require('axios');
 
 bot.start((ctx) => ctx.reply('Hello my friend, welcome to Edgeless Staking Surplus Bot!!'))
 bot.hears('hi', (ctx) => ctx.reply('Hey there'))
-bot.hears('price', (ctx) => ctx.reply('The price is: ' + price))
+bot.hears('surplus', (ctx) => ctx.reply('The surplus is: '))
 bot.launch()
+
+// reddit [superfluo]
 
 bot.on('text', message=> {
   const subreddit = message.message.text;
@@ -29,6 +31,9 @@ bot.on('text', message=> {
 
 bot.startPolling();
 
+// etherscan api usage => https://www.npmjs.com/package/etherscan   [non mi serve, solo da esempio]
+
+const Etherscan = require('etherscan');
 const etherscan = new Etherscan("myetherscankey"); // Some methods working without API_KEY
 
 
@@ -43,23 +48,26 @@ etherscan.getEtherBalance({
     tag: 'latest' // Optional, default 'latest'
 });
 
+// Get ERC20-Token Account Balance for TokenContractAddress [mi serve]
+// => inserito il contratto di creazioen di un token y e un wallet, si ottiene il numero di token y nel wallet
+
 var Web3 = require('web3');
 var web3 = new Web3(new Web3.providers.HttpProvider());
 var version = web3.version.api;
 
 
 $.getJSON('https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0x08711d3b02c8758f2fb3ab4e80228418a7f8e39c&address=0x91f273b7A28F5169FD7B7995A54B767cA797BC63&tag=latest&apikey=myetherscankey', function (data) {
-  var surplus = 0;
-  surplus = JSON.parse(data.result);
+  var EdgelessWallet = JSON.parse(data);
+  
 
 }
 
 /*edgeless contract = "0x08711d3b02c8758f2fb3ab4e80228418a7f8e39c"
-edgeless bankroll wallet = "0x91f273b7A28F5169FD7B7995A54B767cA797BC63"
-amount staked 5th round = 5183037
-reserve bankroll = 1031734
-starting bankroll = 1309142
-surplus = edgeless bankroll wallet - (amount staked + reserve bankroll + starting bankroll)*/
+edgeless wallet = "0x91f273b7A28F5169FD7B7995A54B767cA797BC63"
+const amount staked 5th round = 5183037
+const reserve bankroll = 1031734
+cosnt starting bankroll = 1309142
+surplus = edgeless wallet - (amount staked + reserve bankroll + starting bankroll)*/
 
 
 /*
