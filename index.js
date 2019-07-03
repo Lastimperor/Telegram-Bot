@@ -6,7 +6,16 @@ const axios = require('axios');
 
 bot.start((ctx) => ctx.reply('Hello my friend, welcome to Edgeless Staking Surplus Bot!!'))
 bot.hears('hi', (ctx) => ctx.reply('Hey there'))
-bot.hears('surplus', (ctx) => ctx.reply('The surplus is: '))
+bot.hears('surplus', (ctx) => ctx.reply(`The surplus is: ${surplus}`))
+bot.hears('staked', (ctx) => ctx.reply(`The staked amount is: ${amountStaked}`))
+bot.hears('twitter', (ctx) => ctx.reply('Take a look here: https://twitter.com/edgelessproject'))
+bot.hears('facebook', (ctx) => ctx.reply('Take a look here: https://www.facebook.com/EdgelessCasino'))
+bot.hears('reddit', (ctx) => ctx.reply('Take a look here: https://www.reddit.com/r/Edgeless'))
+bot.hears('blog', (ctx) => ctx.reply('Take a look here: https://blog.edgelessgroup.io'))
+bot.hears('staking', (ctx) => ctx.reply('Take a look here: https://staking.edgelessgroup.io'))
+bot.hears('token', (ctx) => ctx.reply('Take a look here: https://www.edgelessgroup.io/token'))
+bot.hears('casino', (ctx) => ctx.reply('Enjoy: https://edgeless.io/?ref=59cd635dfef2f72b003e2ea8'))
+
 bot.launch()
 
 // reddit [superfluo]
@@ -49,7 +58,7 @@ etherscan.getEtherBalance({
 });
 
 // Get ERC20-Token Account Balance for TokenContractAddress [mi serve]
-// => inserito il contratto di creazioen di un token y e un wallet, si ottiene il numero di token y nel wallet
+// => inserito il contratto di creazione di un token y e un wallet, si ottiene il numero di token y nel wallet
 
 var Web3 = require('web3');
 var web3 = new Web3(new Web3.providers.HttpProvider());
@@ -64,7 +73,7 @@ $.getJSON('https://api.etherscan.io/api?module=account&action=tokenbalance&contr
 
 /*edgeless contract = "0x08711d3b02c8758f2fb3ab4e80228418a7f8e39c"
 edgeless wallet = "0x91f273b7A28F5169FD7B7995A54B767cA797BC63"
-const amount staked 5th round = 5183037
+const amount staked 6th round = 6926686
 const reserve bankroll = 1031734
 cosnt starting bankroll = 1309142
 surplus = edgeless wallet - (amount staked + reserve bankroll + starting bankroll)*/
