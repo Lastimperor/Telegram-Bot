@@ -4,7 +4,7 @@ const axios = require('axios');
 const amountStaked = 6926686;
 
 /*const reserveBankroll = 1031734
-cosnt startingBankroll = 1309142
+const startingBankroll = 1309142
 var surplus = edgeless wallet - (amount staked + reserveBankroll + startingBankroll)*/
 
 bot.start((ctx) => ctx.reply('Hello my friend, welcome to Edgeless Staking Surplus Bot!!'))
