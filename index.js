@@ -1,11 +1,35 @@
 const Telegraf = require('telegraf');
 const bot = new Telegraf("mykey");
 const axios = require('axios');
-const amountStaked = 6926686;
 
-/*const reserveBankroll = 1031734
-const startingBankroll = 1309142
-var surplus = edgeless wallet - (amount staked + reserveBankroll + startingBankroll)*/
+const amountStaked = 6926686;
+const reserveBankroll = 1000000;
+const startingBankroll = 1500000;
+
+var jquery = require('jquery')
+var $ = require("jquery");
+
+var getJSON = require('get-json')
+
+var surplus = 0
+
+  function test() {
+
+    getJSON('https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0x08711d3b02c8758f2fb3ab4e80228418a7f8e39c&address=0x91f273b7A28F5169FD7B7995A54B767cA797BC63&tag=latest&apikey=BVYKSWHMF296JTM7PJPC3EGBGMJ24MAUVQ', function (error, response){
+      //console.log(error);
+      //console.log(response);
+      initialBankroll = amountStaked + reserveBankroll + startingBankroll;
+      console.log(initialBankroll);
+
+      bankroll = response["result"];
+      console.log(bankroll);
+
+      surplus = bankroll - initialBankroll;
+      //console.log("surplus is: ",surplus);
+  });
+  return surplus;
+}
+
 
 bot.start((ctx) => ctx.reply('Hello my friend, welcome to Edgeless Staking Surplus Bot!!'))
 bot.hears('hi', (ctx) => ctx.reply('Hey there'))
