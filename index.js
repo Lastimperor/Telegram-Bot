@@ -53,6 +53,8 @@ bot.on('text', (ctx)=> {
   }
 });
 
+bot.startPolling();
+
 bot.start((ctx) => ctx.reply('Hello my friend, welcome to Edgeless Bot!!\
  \n\
  \nEdgeless Group Homepage:\
@@ -95,7 +97,6 @@ bot.hears('casino', (ctx) => ctx.reply('Enjoy: https://edgeless.io/?ref=59cd635d
 
 bot.launch()
 
-bot.startPolling();
 
 
 /*edgeless contract = "0x08711d3b02c8758f2fb3ab4e80228418a7f8e39c"
