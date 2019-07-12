@@ -6,9 +6,6 @@ const amountStaked = 6926686;
 const reserveBankroll = 1000000;
 const startingBankroll = 1500000;
 
-var jquery = require('jquery')
-var $ = require("jquery");
-
 var getJSON = require('get-json')
 
 var surplus = 0
