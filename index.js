@@ -1,7 +1,6 @@
 const Etherscan = require('etherscan');
 const Telegraf = require('telegraf');
 const bot = new Telegraf("mykey");
-
 const axios = require('axios');
 
 const amountStaked = 8780995;
@@ -30,30 +29,6 @@ function calcoloSurplus(ctx, val , calcoloDividendo) {
     }
 });
 }
-
-bot.on('text', (ctx)=> {
-  const subreddit = ctx.message.text;
-
-  var parsed = parseInt(subreddit);
-  if (!isNaN(parsed)) { calcoloSurplus(ctx, parsed, true)}
-  else {
-  axios
-    .get(`https://reddit.com/r/${subreddit}/top.json?limit=10`)
-    .then(res => {
-      const data = res.data.data;
-      if (data.children.length < 1)
-        return ctx.reply("try to another search (in english), for any problem contact the creator @Lastimperor");
-      const link = `https://reddit.com/${data.children[0].data.permalink}`;
-      return ctx.reply(link);
-    })
-    .catch(err => {
-      console.log(err);
-      return ctx.reply('try another search (in english), for any problem contact the creator @Lastimperor');
-    });
-  }
-});
-
-bot.startPolling();
 
 bot.start((ctx) => ctx.reply('Hello my friend, welcome to Edgeless Bot!!\
  \n\
@@ -97,6 +72,29 @@ bot.hears('casino', (ctx) => ctx.reply('Enjoy: https://edgeless.io/?ref=59cd635d
 
 bot.launch()
 
+bot.on('text', (ctx)=> {
+  const subreddit = ctx.message.text;
+
+  var parsed = parseInt(subreddit);
+  if (!isNaN(parsed)) { calcoloSurplus(ctx, parsed, true)}
+  else {
+  axios
+    .get(`https://reddit.com/r/${subreddit}/top.json?limit=10`)
+    .then(res => {
+      const data = res.data.data;
+      if (data.children.length < 1)
+        return ctx.reply("try to another search (in english), for any problem contact the creator @Lastimperor");
+      const link = `https://reddit.com/${data.children[0].data.permalink}`;
+      return ctx.reply(link);
+    })
+    .catch(err => {
+      console.log(err);
+      return ctx.reply('try another search (in english), for any problem contact the creator @Lastimperor');
+    });
+  }
+});
+
+bot.startPolling();
 
 
 /*edgeless contract = "0x08711d3b02c8758f2fb3ab4e80228418a7f8e39c"
