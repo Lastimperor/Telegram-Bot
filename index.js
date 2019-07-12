@@ -1,3 +1,17 @@
+const Etherscan = require('etherscan');
+const Telegraf = require('telegraf');
+const bot = new Telegraf("mykey");
+
+const axios = require('axios');
+
+const amountStaked = 8780995;
+const startingBankroll = 1902593;
+var jquery = require('jquery')
+
+var getJSON = require('get-json')
+var surplus = 0;
+
+
 function calcoloSurplus(ctx, val , calcoloDividendo) {
   getJSON('https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0x08711d3b02c8758f2fb3ab4e80228418a7f8e39c&address=0x91f273b7A28F5169FD7B7995A54B767cA797BC63&tag=latest&apikey=mykey' function (error, response){
     //console.log(error);
