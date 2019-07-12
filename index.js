@@ -1,5 +1,5 @@
 function calcoloSurplus(ctx, val , calcoloDividendo) {
-  getJSON('https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0x08711d3b02c8758f2fb3ab4e80228418a7f8e39c&address=0x91f273b7A28F5169FD7B7995A54B767cA797BC63&tag=latest&apikey=BVYKSWHMF296JTM7PJPC3EGBGMJ24MAUVQ', function (error, response){
+  getJSON('https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0x08711d3b02c8758f2fb3ab4e80228418a7f8e39c&address=0x91f273b7A28F5169FD7B7995A54B767cA797BC63&tag=latest&apikey=mykey' function (error, response){
     //console.log(error);
     //console.log(response);
     bankroll = response["result"];
